@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException
+from routes.auth import router_auth
 from routes.blog import router_blog
 from routes.blog_follow import router_blog_follow
 from routes.category import router_category
@@ -24,6 +25,7 @@ def get_db():
         db.close()
 
 
+app.include_router(router_auth)
 app.include_router(router_blog)
 app.include_router(router_blog_follow)
 app.include_router(router_category)
