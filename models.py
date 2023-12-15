@@ -4,6 +4,7 @@ from sqlalchemy import Enum
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 from fastapi_utils.guid_type import GUID
+from datetime import datetime
 
 
 class AccountType(PyEnum):

@@ -1,7 +1,31 @@
-from typing import Optional, List
+from typing import Generic, TypeVar, Optional, List
 from pydantic import BaseModel, Field
 from uuid import UUID
 from datetime import datetime
+from fastapi import status
+
+####################  Base  ####################
+DataT = TypeVar('DataT')
+
+
+class BaseResponse(BaseModel, Generic[DataT]):
+    is_success: bool
+    code: int
+    message: str
+    data: Optional[DataT]
+
+    @classmethod
+    def on_success(cls, result: DataT):
+        return cls(is_success=True, code=status.HTTP_200_OK, message="요청이 성공적으로 처리되었습니다.", data=result)
+
+    @classmethod
+    def on_create(cls, result: DataT):
+        return cls(is_success=True, code=status.HTTP_201_CREATED, message="요청이 성공적으로 처리되어 새로운 리소스가 생성되었습니다.",
+                   data=result)
+
+    @classmethod
+    def from_exception(cls, exception: BaseException):
+        return cls(is_success=False, code=exception.error_code.status, message=exception.error_code.message)
 
 
 ####################  Auth  ####################
@@ -172,8 +196,6 @@ class TopicDto(BaseModel):
 
 
 ####################  Post  ####################
-class DeletePostReqDto(BaseModel):
-    post_id: UUID = Field(..., title="게시글 식별자")
 
 
 class PostDto(BaseModel):
@@ -227,7 +249,6 @@ class PostWritePostReqDto(BaseModel):
 
 
 class PutModifyPostReqDto(BaseModel):
-    post_id: UUID = Field(..., title="게시글 식별자")
     title: str = Field(..., title="게시글 제목")
     content: str = Field(..., title="게시글 내용")
     summary: str = Field(..., title="게시글 3줄 요약")
