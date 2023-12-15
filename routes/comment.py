@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Query, Depends, HTTPException, Header, Body
 from typing import Optional, List
 from uuid import UUID
-from schemas import BaseResponse, CommentSummaryDto, PostCreateCommentReqDto, PutUpdateCommentReqDto
+from schemas.base import BaseResponse
+from schemas.comment import CommentSummaryDto, PostCreateCommentReqDto, PutUpdateCommentReqDto
 from auth.jwt_handler import verify_access_token
 
 router_comment = APIRouter()

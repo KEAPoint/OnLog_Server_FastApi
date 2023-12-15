@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Query, Depends, HTTPException, Header, Body
 from typing import Optional, List
 from uuid import UUID
-from schemas import BaseResponse, CommentLikeDto
+from schemas.base import BaseResponse
+from schemas.comment_like import CommentLikeDto
 from auth.jwt_handler import verify_access_token
 
 router_comment_like = APIRouter()

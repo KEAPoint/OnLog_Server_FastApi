@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Query, Depends, HTTPException, Header, Body
 from typing import Optional, List
 from uuid import UUID
-from schemas import BaseResponse, BlogDto, PostLoginRes, PostLogoutRes
+from schemas.auth import PostLoginRes, PostLogoutRes
+from schemas.base import BaseResponse
 from auth.jwt_handler import verify_access_token
 
 router_auth = APIRouter()

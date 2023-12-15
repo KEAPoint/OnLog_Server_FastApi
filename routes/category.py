@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Query, Depends, HTTPException, Header, Body
 from typing import Optional, List
 from uuid import UUID
-from schemas import BaseResponse, CategoryDto, PostCreateCategoryReqDto, PutCategoryUpdateReqDto
+from schemas.base import BaseResponse
+from schemas.category import CategoryDto, PostCreateCategoryReqDto, PutCategoryUpdateReqDto
 from auth.jwt_handler import verify_access_token
 
 router_category = APIRouter()

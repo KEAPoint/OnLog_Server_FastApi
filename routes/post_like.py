@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Query, Depends, HTTPException, Header, Body
-from schemas import BaseResponse, PostLikeDto
+from schemas.base import BaseResponse
+from schemas.post_like import PostLikeDto
 from auth.jwt_handler import verify_access_token
 
 router_post_like = APIRouter()
