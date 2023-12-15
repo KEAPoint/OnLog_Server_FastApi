@@ -153,18 +153,12 @@ class CommentSummaryDto(BaseModel):
     created_at: datetime = Field(..., title="댓글 작성 시간")
 
 
-class DeleteCommentReqDto(BaseModel):
-    comment_id: UUID = Field(..., title="댓글 식별자")
-
-
 class PostCreateCommentReqDto(BaseModel):
-    post_id: UUID = Field(..., title="게시글 id")
     content: str = Field(..., title="댓글 내용")
     parent_comment_id: Optional[UUID] = Field(None, title="부모댓글의 ID (null 가능)")
 
 
 class PutUpdateCommentReqDto(BaseModel):
-    comment_id: UUID = Field(..., title="댓글 식별자")
     content: str = Field(..., title="댓글 내용")
 
 
