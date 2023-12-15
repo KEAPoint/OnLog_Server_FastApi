@@ -175,14 +175,6 @@ class CommentLikeDto(BaseModel):
     is_liked: bool = Field(..., title="사용자가 해당 댓글에 대해 '좋아요' 상태인지 나타내는 플래그")
 
 
-class DeleteCommentLikeReqDto(BaseModel):
-    comment_id: UUID = Field(..., title="댓글 식별자")
-
-
-class PostCommentLikeReqDto(BaseModel):
-    comment_id: UUID = Field(..., title="댓글 식별자")
-
-
 ####################  Hashtag  ####################
 class HashtagDto(BaseModel):
     id: int = Field(..., title="해시태그 식별자")
