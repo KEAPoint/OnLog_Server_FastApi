@@ -75,7 +75,6 @@ class BlogProfileDto(BaseModel):
 
 
 class PostCreateBlogReqDto(BaseModel):
-    blog_id: UUID = Field(..., title="블로그 식별자")
     blog_name: str = Field(..., title="블로그 이름")
     blog_nickname: str = Field(..., title="블로그 별명")
     blog_profile_img: str = Field(..., title="블로그 프로필")
