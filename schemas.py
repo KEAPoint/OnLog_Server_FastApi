@@ -96,14 +96,6 @@ class BlogFollowDto(BaseModel):
     is_following: bool = Field(..., title="해당 블로그를 팔로잉 하고 있는지 여부")
 
 
-class DeleteFollowReqDto(BaseModel):
-    target_blog_id: UUID = Field(..., title="팔로우 취소할 블로그 식별자")
-
-
-class PostFollowReqDto(BaseModel):
-    target_blog_id: UUID = Field(..., title="팔로우할 블로그 식별자")
-
-
 ####################  Category  ####################
 class CategoryDto(BaseModel):
     id: int = Field(..., title="카테고리 식별자")
