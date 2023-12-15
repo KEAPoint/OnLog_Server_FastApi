@@ -111,16 +111,11 @@ class CategoryDto(BaseModel):
     order: int = Field(..., title="카테고리 순서")
 
 
-class DeleteCategoryReqDto(BaseModel):
-    id: int = Field(..., title="삭제할 카테고리 식별자")
-
-
 class PostCreateCategoryReqDto(BaseModel):
     name: str = Field(..., title="생성할 카테고리 이름")
 
 
 class PutCategoryUpdateReqDto(BaseModel):
-    id: int = Field(..., title="수정할 카테고리 식별자")
     name: str = Field(..., title="수정할 카테고리 이름")
 
 
