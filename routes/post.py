@@ -3,7 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from schemas.base import BaseResponse
 from schemas.post import PostSummaryDto, PostWithRelatedPostsDto, PostWritePostReqDto, PutModifyPostReqDto
-from auth.jwt_handler import verify_access_token
+from auth.jwt_handler import extract_blog_id
 
 router_post = APIRouter()
 
@@ -27,7 +27,7 @@ async def get_posts(
         pageable: Pageable = Depends(Pageable),
 ):
     try:
-        my_blog_id = verify_access_token(token)
+        my_blog_id = extract_blog_id(token)
         my_blog_id_uuid = UUID(my_blog_id)
 
         # Access pageable.page and pageable.size in your logic

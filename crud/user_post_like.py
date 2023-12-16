@@ -1,34 +1,22 @@
 from sqlalchemy.orm import Session
-
-import models
-
-
-def create_user_post_like(db: Session, user_post_like_data: dict):
-    db_user_post_like = models.UserPostLike(**user_post_like_data)
-    db.add(db_user_post_like)
-    db.commit()
-    db.refresh(db_user_post_like)
-    return db_user_post_like
+from models import UserPostLike
+from schemas.post_like import PostLikeDto
 
 
-def get_user_post_like(db: Session, user_post_like_id: int):
-    return db.query(models.UserPostLike).filter(models.UserPostLike.id == user_post_like_id).first()
+def toggle_like(db: Session, blog_id: int, post_id: int) -> PostLikeDto:
+    # 사용자가 게시물에 좋아요를 했는지 확인
+    existing_like = (db.query(UserPostLike)
+                     .filter(UserPostLike.user_id == blog_id, UserPostLike.post_id == post_id).first())
 
+    if existing_like:
+        # 이미 좋아요를 한 경우, 좋아요 취소
+        db.delete(existing_like)
+        db.commit()
+        return PostLikeDto(blog_id=blog_id, post_id=post_id, is_liked=False)
 
-def get_user_post_likes(db: Session, skip: int = 0, limit: int = 10):
-    return db.query(models.UserPostLike).offset(skip).limit(limit).all()
-
-
-def update_user_post_like(db: Session, user_post_like_id: int, user_post_like_data: dict):
-    db_user_post_like = db.query(models.UserPostLike).filter(models.UserPostLike.id == user_post_like_id).first()
-    for key, value in user_post_like_data.items():
-        setattr(db_user_post_like, key, value)
-    db.commit()
-    db.refresh(db_user_post_like)
-    return db_user_post_like
-
-
-def delete_user_post_like(db: Session, user_post_like_id: int):
-    db_user_post_like = db.query(models.UserPostLike).filter(models.UserPostLike.id == user_post_like_id).first()
-    db.delete(db_user_post_like)
-    db.commit()
+    else:
+        # 좋아요를 하지 않은 경우, 좋아요 생성
+        new_like = UserPostLike(user_id=blog_id, post_id=post_id)
+        db.add(new_like)
+        db.commit()
+        return PostLikeDto(user_id=blog_id, post_id=post_id, is_liked=True)

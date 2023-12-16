@@ -3,7 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from schemas.base import BaseResponse
 from schemas.category import CategoryDto, PostCreateCategoryReqDto, PutCategoryUpdateReqDto
-from auth.jwt_handler import verify_access_token
+from auth.jwt_handler import extract_blog_id
 
 router_category = APIRouter()
 

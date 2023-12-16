@@ -3,7 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from schemas.base import BaseResponse
 from schemas.blog import BlogDto, BlogProfileDto, PostCreateBlogReqDto, PutUpdateBlogReqDto
-from auth.jwt_handler import verify_access_token
+from auth.jwt_handler import extract_blog_id
 
 router_blog = APIRouter()
 

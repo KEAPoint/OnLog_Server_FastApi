@@ -3,7 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from schemas.base import BaseResponse
 from schemas.comment_like import CommentLikeDto
-from auth.jwt_handler import verify_access_token
+from auth.jwt_handler import extract_blog_id
 
 router_comment_like = APIRouter()
 
