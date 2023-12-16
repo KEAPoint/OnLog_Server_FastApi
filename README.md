@@ -1,9 +1,10 @@
 # OnLog_Server_FastApi
 
-### 프로젝트 개요
+### 🌐 프로젝트 개요
 이 프로젝트는 Spring Boot를 기반으로 작업 된 [기존 프로젝트](https://github.com/KEAPoint/OnLog_Post_Server)를 참조하여 FastAPI로 구현하였습니다.
 
-### 프로젝트 개발 환경
+
+### 🛠️ 프로젝트 개발 환경
 프로젝트는 아래 환경에서 개발되었습니다.
 
 > OS: macOS Sonoma, Ventura   
@@ -14,7 +15,7 @@ DB 설정에 관한 코드에서 Python 3.10 이상 버전에서만 작동하는
 
 자세한 내용은 [공식문서](https://fastapi.tiangolo.com/ko/tutorial/sql-databases/?h=sq)에서 확인 부탁드립니다.
 
-### 프로젝트 구조
+### 🔗 프로젝트 구조
 ```text
 .
 ├── .dockerignore          🚫 Docker 이미지 생성 시 무시하는 파일 목록
@@ -35,7 +36,7 @@ DB 설정에 관한 코드에서 Python 3.10 이상 버전에서만 작동하는
 
 ```
 
-### 프로젝트 개발/실행
+### ✅ 프로젝트 개발/실행
 해당 프로젝트를 추가로 개발 혹은 실행시켜보고 싶으신 경우 아래의 절차에 따라 진행해주세요
 
 1. 가상 환경 생성
@@ -78,7 +79,7 @@ http://localhost:8000/docs
 http://localhost:8000/redoc
 ```
 
-### 프로젝트 회고
+### 📝 프로젝트 회고
 프로젝트를 개발하면서 다음과 같은 아쉬움이 있었습니다.
 
 1. 프로젝트 퀄리티
