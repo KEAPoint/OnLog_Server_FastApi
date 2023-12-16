@@ -10,6 +10,20 @@ class CategoryDto(BaseModel):
 class PostCreateCategoryReqDto(BaseModel):
     name: str = Field(..., title="생성할 카테고리 이름")
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "개미도 먹고 살아야지"
+            }
+        }
+
 
 class PutCategoryUpdateReqDto(BaseModel):
     name: str = Field(..., title="수정할 카테고리 이름")
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "개미도 먹고 살아야지"
+            }
+        }

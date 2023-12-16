@@ -58,6 +58,22 @@ class PostWritePostReqDto(BaseModel):
     hashtag_list: List[str] = Field(..., title="게시글 hashtag")
     topic_id: int = Field(..., title="게시글 주제 식별자")
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "title": "최고의 겨울 간식",
+                "content": "겨울 최고 간식은 뭐라고 생각하시나요? 호호 불어먹는 호빵? 따끈따끈한 붕어빵? 코를 자극하는 군고구마? 저는 셋다 좋습니다.",
+                "summary": "겨울 최고 간식은? 뭐일까요? 저는 군고구마",
+                "thumbnail_link": "https://kea-004-s3.s3.amazonaws.com/318d2b7b052f.png",
+                "is_public": True,
+                "category_id": 0,
+                "hashtag_list": [
+                    "간식", "겨울"
+                ],
+                "topic_id": 0
+            }
+        }
+
 
 class PutModifyPostReqDto(BaseModel):
     title: str = Field(..., title="게시글 제목")
@@ -66,5 +82,21 @@ class PutModifyPostReqDto(BaseModel):
     thumbnail_link: str = Field(..., title="게시글 thumbnail 사진 위치")
     is_public: bool = Field(..., title="게시글 공개 여부")
     category_id: int = Field(..., title="게시글 카테고리")
-    hashtag_list: List[str] = Field(..., title="게시글 hashtag")
+    hashtag_list: List[HashtagDto] = Field(..., title="게시글 hashtag")
     topic_id: int = Field(..., title="게시글 주제 식별자")
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "title": "최고의 겨울 간식",
+                "content": "겨울 최고 간식은 뭐라고 생각하시나요? 호호 불어먹는 호빵? 따끈따끈한 붕어빵? 코를 자극하는 군고구마? 저는 셋다 좋습니다.",
+                "summary": "겨울 최고 간식은? 뭐일까요? 저는 군고구마",
+                "thumbnail_link": "https://kea-004-s3.s3.amazonaws.com/318d2b7b052f.png",
+                "is_public": True,
+                "category_id": 0,
+                "hashtag_list": [
+                    "간식", "겨울"
+                ],
+                "topic_id": 0
+            }
+        }

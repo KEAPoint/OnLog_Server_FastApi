@@ -37,6 +37,21 @@ class PostCreateCommentReqDto(BaseModel):
     content: str = Field(..., title="댓글 내용")
     parent_comment_id: Optional[UUID] = Field(None, title="부모댓글의 ID (null 가능)")
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "content": "저의 겨울 최애 간식은 사실 붕어빵이랍니다 ㅎㅎ",
+                "parent_comment_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+        }
+
 
 class PutUpdateCommentReqDto(BaseModel):
     content: str = Field(..., title="댓글 내용")
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "content": "저의 겨울 최애 간식은 사실 붕어빵이랍니다 ㅎㅎ",
+            }
+        }
