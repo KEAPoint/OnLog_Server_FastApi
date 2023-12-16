@@ -1,7 +1,7 @@
 # OnLog_Server_FastApi
 
 ### 🌐 프로젝트 개요
-이 프로젝트는 Spring Boot를 기반으로 작업 된 [기존 프로젝트](https://github.com/KEAPoint/OnLog_Post_Server)를 참조하여 FastAPI로 구현하였습니다.
+이 프로젝트는 Spring Boot를 기반으로 작업 된 [🔗기존 프로젝트](https://github.com/KEAPoint/OnLog_Post_Server)를 참조하여 FastAPI로 구현하였습니다.
 
 
 ### 🛠️ 프로젝트 개발 환경
