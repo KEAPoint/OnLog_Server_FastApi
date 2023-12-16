@@ -9,24 +9,6 @@ from schemas.base import BaseResponse
 from schemas.blog import BlogDto, BlogProfileDto, PostCreateBlogReqDto, PutUpdateBlogReqDto
 
 router_blog = APIRouter()
-app = FastAPI()
-
-
-@app.exception_handler(BaseException)
-async def base_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=400,
-        content={"message": f"An error occurred: {exc.detail}"},
-    )
-
-
-# global handler
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={"message": f"An error occurred: {exc.detail}"},
-    )
 
 
 @router_blog.get("/blog/{blog_id}", tags=["Blog"], summary="블로그 조회", description="블로그를 조회합니다.",

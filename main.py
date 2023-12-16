@@ -7,6 +7,7 @@ from routes.comment import router_comment
 from routes.comment_like import router_comment_like
 from routes.post import router_post
 from routes.post_like import router_post_like
+from starlette.responses import JSONResponse
 
 import crud, models, schemas
 from database import SessionLocal, engine
@@ -15,6 +16,13 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# global handler
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"message": f"An error occurred: {exc.detail}"},
+    )
 
 app.include_router(router_auth)
 app.include_router(router_blog)
