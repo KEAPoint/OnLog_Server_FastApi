@@ -20,3 +20,9 @@ def toggle_like(db: Session, blog_id: int, post_id: int) -> PostLikeDto:
         db.add(new_like)
         db.commit()
         return PostLikeDto(user_id=blog_id, post_id=post_id, is_liked=True)
+
+
+def delete_user_post_like(db: Session, user_post_like_id: int):
+    db_user_post_like = db.query(UserPostLike).filter(UserPostLike.id == user_post_like_id).first()
+    db.delete(db_user_post_like)
+    db.commit()
